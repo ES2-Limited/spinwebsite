@@ -1,6 +1,6 @@
         /* Define the custom font and base background */
         html { font-size: 15px; }
-@media (min-width: 1024px) { html { font-size: 15px; } }
+        @media (min-width: 1024px) { html { font-size: 15px; } }
 
 
         body {
