@@ -144,8 +144,7 @@
 
    
   <style>
-     /* <!-- ======= original styles from your about.html (verbatim) ======= --> */
-      body {
+    body {
       font-family: 'Inter', sans-serif;
       min-height: 100vh;
       background-color: #f7f9fb;
@@ -154,26 +153,42 @@
     .text-custom-green { color: #008C5A; }
     .bg-custom-lime { background-color: #aaff33; }
     .bg-custom-dark-footer { background-color: #111111; }
-    /* <!-- ======= gallery + lightbox specific styles (appended) ======= --> */
-    /* filter button */
-    .filter-btn { cursor: pointer; }
+
+    /* filter buttons */
+    .filter-btn { cursor: pointer; padding-bottom: 4px; }
     .filter-btn.active { color: #008C5A; font-weight: 700; border-bottom: 3px solid #008C5A; padding-bottom: 6px; }
 
     /* gallery grid items */
-    .gallery-item { overflow: hidden; border-radius: 12px; background: #fff; box-shadow: 0 6px 18px rgba(15,23,42,0.06); }
+    .gallery-item { overflow: hidden; border-radius: 10px; background: #000; box-shadow: 0 4px 14px rgba(15,23,42,0.08); position: relative; }
     .gallery-item img, .gallery-item video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
-    .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.03); }
+    .gallery-item:hover img, .gallery-item:hover video { transform: scale(1.04); }
+    .video-thumb { width: 100%; height: 100%; background: linear-gradient(135deg,#0a2e1a,#1a5c36); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: #fff; transition: background .2s; }
+    .gallery-item:hover .video-thumb { background: linear-gradient(135deg,#0d3d22,#22774a); }
+    .video-thumb .play-btn { width: 52px; height: 52px; border-radius: 50%; background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.5); display: grid; place-items: center; font-size: 1.4rem; padding-left: 4px; transition: background .2s; }
+    .gallery-item:hover .play-btn { background: rgba(255,255,255,0.28); }
+    .video-thumb span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; opacity: 0.8; }
+    #lightbox video { max-width: 100%; max-height: 92vh; border-radius: 8px; display: block; }
+
+    /* event collapsible */
+    .event-photos { transition: max-height 0.4s ease, opacity 0.4s ease; overflow: hidden; }
+    .event-photos.collapsed { max-height: 0; opacity: 0; padding-top: 0; padding-bottom: 0; }
+    .event-photos.expanded { max-height: 9999px; opacity: 1; }
+    .chevron { transition: transform 0.3s ease; }
+    .chevron.open { transform: rotate(180deg); }
 
     /* lightbox overlay */
     #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; z-index: 120; padding: 1rem; }
     #lightbox.show { display: flex; }
     #lightbox .box { width: 100%; max-width: 92vw; max-height: 92vh; position: relative; display:flex; align-items:center; justify-content:center; }
-    #lightbox img, #lightbox video { max-width: 100%; max-height: 92vh; border-radius: 8px; background: #000; display:block; }
-    #lightbox .close { position: absolute; top: -40px; right: 0; background: rgba(0,0,0,0.6); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; font-size: 20px; z-index:130; }
-
-    /* small screens tweak for hero spacing */
+    #lightbox img { max-width: 100%; max-height: 92vh; border-radius: 8px; background: #000; display:block; }
+    #lightbox .lb-close { position: absolute; top: -44px; right: 0; background: rgba(0,0,0,0.6); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; font-size: 20px; z-index:130; }
+    #lightbox .lb-prev, #lightbox .lb-next { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: #fff; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer; font-size: 22px; z-index:130; user-select:none; }
+    #lightbox .lb-prev { left: -52px; }
+    #lightbox .lb-next { right: -52px; }
     @media (max-width: 640px) {
       .hero-title { padding-left: 1rem; padding-right: 1rem; }
+      #lightbox .lb-prev { left: 4px; }
+      #lightbox .lb-next { right: 4px; }
     }
   </style>
 
@@ -198,62 +213,120 @@
   </section>
 
   <!-- MAIN: Gallery Content -->
-  <main class="py-20 bg-white">
+  <main id="main" class="py-16 bg-gray-50 min-h-screen">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
       <!-- Filter buttons -->
-      <div class="flex justify-center space-x-8 mb-8 text-lg">
-        <button id="btn-all" class="filter-btn active" onclick="filterGallery('all','btn-all')">All</button>
-        <button id="btn-photo" class="filter-btn" onclick="filterGallery('photo','btn-photo')">Photo Gallery</button>
-        <button id="btn-video" class="filter-btn" onclick="filterGallery('video','btn-video')">Video Gallery</button>
+      <div class="flex justify-center space-x-8 mb-12 text-lg border-b border-gray-200 pb-4">
+        <button id="btn-all"   class="filter-btn active" onclick="filterGallery('all','btn-all')">All</button>
+        <button id="btn-photo" class="filter-btn"        onclick="filterGallery('photo','btn-photo')">Photo Gallery</button>
+        <button id="btn-video" class="filter-btn"        onclick="filterGallery('video','btn-video')">Video Gallery</button>
       </div>
 
-      <!-- Grid -->
-      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <!-- Photos -->
-        <div class="gallery-item photo cursor-pointer" onclick="openLightbox('images/solar2.jpeg','image')">
-          <img src="images/solar2.jpg" alt="Gallery Photo 1" class="w-full h-64 object-cover rounded-lg">
+      <!-- ═══════════════════════ MARCH 2026 ═══════════════════════ -->
+      <div class="mb-14">
+
+        <!-- Month label -->
+        <div class="flex items-center gap-4 mb-8">
+          <div class="h-px flex-1 bg-gray-300"></div>
+          <span class="px-5 py-1.5 rounded-full bg-[#008C5A] text-white text-sm font-bold tracking-widest uppercase">March 2026</span>
+          <div class="h-px flex-1 bg-gray-300"></div>
         </div>
 
-        <div class="gallery-item photo cursor-pointer" onclick="openLightbox('images/solar1.jpeg','image')">
-          <img src="images/solar1.jpg" alt="Gallery Photo 2" class="w-full h-64 object-cover rounded-lg">
+        <!-- Event: Flag-Off -->
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+
+          <!-- Event header (toggle button) -->
+          <button onclick="toggleEvent('march-flagoff')"
+                  class="w-full flex items-start sm:items-center justify-between gap-4 px-6 py-5 text-left hover:bg-green-50 transition-colors group focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#008C5A]"
+                  aria-expanded="true" aria-controls="march-flagoff">
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base sm:text-lg font-extrabold text-gray-900 group-hover:text-[#008C5A] transition-colors leading-snug uppercase tracking-wide">
+                The Official Flag-Off of the Sustainable Power and Irrigation for Nigeria (SPIN) Project
+              </h3>
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-sm text-gray-500">
+                <span class="flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  10th March, 2026
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L12 22l-5.657-5.343A8 8 0 1117.657 16.657zM12 13a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                  Abuja Continental Hotel, Abuja
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                  8 Photos
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="h-4 w-4 text-[#008C5A]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.277A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+                  3 Videos
+                </span>
+              </div>
+            </div>
+            <svg id="march-flagoff-icon" class="chevron open h-6 w-6 text-gray-400 flex-shrink-0 mt-1 sm:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+
+          <!-- Photo grid (collapsible) -->
+          <div id="march-flagoff" class="event-photos expanded px-6 pb-6 pt-2">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-1.jpeg', 'march-flagoff-set', 0)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-1.jpeg" alt="Flag-Off Event Photo 1" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-2.jpeg', 'march-flagoff-set', 1)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-2.jpeg" alt="Flag-Off Event Photo 2" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-3.jpeg', 'march-flagoff-set', 2)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-3.jpeg" alt="Flag-Off Event Photo 3" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-4.jpeg', 'march-flagoff-set', 3)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-4.jpeg" alt="Flag-Off Event Photo 4" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-5.jpeg', 'march-flagoff-set', 4)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-5.jpeg" alt="Flag-Off Event Photo 5" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-6.jpeg', 'march-flagoff-set', 5)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-6.jpeg" alt="Flag-Off Event Photo 6" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-7.jpeg', 'march-flagoff-set', 6)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-7.jpeg" alt="Flag-Off Event Photo 7" loading="lazy">
+              </div>
+              <div class="gallery-item photo cursor-pointer aspect-[4/3]" onclick="openLightbox('images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-8.jpeg', 'march-flagoff-set', 7)">
+                <img src="images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-8.jpeg" alt="Flag-Off Event Photo 8" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Videos sub-section -->
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-6 mb-3">Videos</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              <div class="gallery-item video cursor-pointer aspect-video" onclick="openVideo('images/videos/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT%20-1.mp4')">
+                <div class="video-thumb"><div class="play-btn">&#9654;</div><span>Video 1</span></div>
+              </div>
+              <div class="gallery-item video cursor-pointer aspect-video" onclick="openVideo('images/videos/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT%20-2.mp4')">
+                <div class="video-thumb"><div class="play-btn">&#9654;</div><span>Video 2</span></div>
+              </div>
+              <div class="gallery-item video cursor-pointer aspect-video" onclick="openVideo('images/videos/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT%20-3.mp4')">
+                <div class="video-thumb"><div class="play-btn">&#9654;</div><span>Video 3</span></div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <div class="gallery-item photo cursor-pointer" onclick="openLightbox('images/solar4.jpeg','image')">
-          <img src="images/solar4.jpg" alt="Gallery Photo 3" class="w-full h-64 object-cover rounded-lg">
-        </div>
-        <div class="gallery-item photo cursor-pointer" onclick="openLightbox('images/solar4.jpeg','image')">
-          <img src="images/solar3.jpg" alt="Gallery Photo 3" class="w-full h-64 object-cover rounded-lg">
-        </div>
-
-
-        <!-- Videos 
-        <div class="gallery-item video cursor-pointer" onclick="openLightbox('images/gallery_video1.mp4','video')">
-          <video muted class="w-full h-64 object-cover rounded-lg">
-            <source src="images/gallery_video1.mp4" type="video/mp4">
-          </video>
-        </div>
-
-        <div class="gallery-item video cursor-pointer" onclick="openLightbox('images/gallery_video2.mp4','video')">
-          <video muted class="w-full h-64 object-cover rounded-lg">
-            <source src="images/gallery_video2.mp4.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="gallery-item video cursor-pointer" onclick="openLightbox('images/gallery_video3.mp4','video')">
-          <video muted class="w-full h-64 object-cover rounded-lg">
-            <source src="images/gallery_video3.mp4.mp4" type="video/mp4">
-          </video>
-        </div>
-         -->
+      </div>
+      <!-- ═══════════════ End March 2026 ═══════════════ -->
 
     </div>
   </main>
 
   <!-- Lightbox -->
-  <div id="lightbox" aria-hidden="true">
+  <div id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
     <div class="box">
       <div id="lightbox-content"></div>
-      <div class="close" role="button" aria-label="Close" onclick="closeLightbox()">✕</div>
+      <div class="lb-close" role="button" tabindex="0" aria-label="Close" onclick="closeLightbox()">✕</div>
+      <div class="lb-prev" role="button" tabindex="0" aria-label="Previous image" onclick="shiftLightbox(-1)">&#8249;</div>
+      <div class="lb-next" role="button" tabindex="0" aria-label="Next image" onclick="shiftLightbox(1)">&#8250;</div>
     </div>
   </div>
   <!-- Partners -->
@@ -298,34 +371,80 @@
 
 
 
-  <!-- Gallery + Lightbox JS -->
+  <!-- Gallery JS -->
   <script>
-    // Filtering
-    function setActiveBtn(id) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(id)?.classList.add('active');
-    }
-
+    // ── Filter buttons ─────────────────────────────────────────────
     function filterGallery(type, btnId) {
-      if (btnId) setActiveBtn(btnId);
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      if (btnId) document.getElementById(btnId)?.classList.add('active');
       document.querySelectorAll('.gallery-item').forEach(item => {
         if (type === 'all') { item.style.display = ''; return; }
         item.style.display = item.classList.contains(type) ? '' : 'none';
       });
     }
 
-    // Lightbox
-    function openLightbox(src, kind) {
-      const lb = document.getElementById('lightbox');
-      const container = document.getElementById('lightbox-content');
-      container.innerHTML = '';
+    // ── Collapsible event sections ──────────────────────────────────
+    function toggleEvent(id) {
+      const panel = document.getElementById(id);
+      const icon  = document.getElementById(id + '-icon');
+      const btn   = panel.previousElementSibling;
+      const isOpen = panel.classList.contains('expanded');
 
-      if (kind === 'image') {
-        container.innerHTML = `<img src="${src}" alt="view">`;
+      if (isOpen) {
+        panel.classList.replace('expanded', 'collapsed');
+        icon.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
       } else {
-        container.innerHTML = `<video src="${src}" controls autoplay></video>`;
+        panel.classList.replace('collapsed', 'expanded');
+        icon.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
       }
+    }
 
+    // ── Lightbox with prev/next ─────────────────────────────────────
+    const imageSets = {
+      'march-flagoff-set': [
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-1.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-2.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-3.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-4.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-5.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-6.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-7.jpeg',
+        'images/march/THE%20OFFICIAL%20FLAG-OFF%20OF%20THE%20SUSTAINABLE%20POWER%20AND%20IRRIGATION%20FOR%20NIGERIA%20(SPIN)%20PROJECT-8.jpeg',
+      ]
+    };
+
+    let currentSet   = null;
+    let currentIndex = 0;
+
+    function openLightbox(src, setId, index) {
+      currentSet   = setId;
+      currentIndex = index;
+      renderLightboxImage(src);
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('show');
+      lb.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightboxImage(src) {
+      document.getElementById('lightbox-content').innerHTML =
+        `<img src="${src}" alt="Gallery image ${currentIndex + 1}">`;
+    }
+
+    function shiftLightbox(dir) {
+      if (!currentSet) return;
+      const set = imageSets[currentSet];
+      currentIndex = (currentIndex + dir + set.length) % set.length;
+      renderLightboxImage(set[currentIndex]);
+    }
+
+    function openVideo(src) {
+      currentSet = null;
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightbox-content').innerHTML =
+        `<video src="${src}" controls autoplay style="max-width:100%;max-height:92vh;border-radius:8px;"></video>`;
       lb.classList.add('show');
       lb.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -333,21 +452,24 @@
 
     function closeLightbox() {
       const lb = document.getElementById('lightbox');
-      const container = document.getElementById('lightbox-content');
       lb.classList.remove('show');
       lb.setAttribute('aria-hidden', 'true');
-      container.innerHTML = '';
+      const content = document.getElementById('lightbox-content');
+      // pause any playing video before clearing
+      content.querySelector('video')?.pause();
+      content.innerHTML = '';
       document.body.style.overflow = '';
+      currentSet = null;
     }
 
-    // close with Escape or clicking outside
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowRight')  shiftLightbox(1);
+      if (e.key === 'ArrowLeft')   shiftLightbox(-1);
+    });
     document.getElementById('lightbox')?.addEventListener('click', e => {
       if (e.target === document.getElementById('lightbox')) closeLightbox();
     });
-
-    // initial state
-    filterGallery('all','btn-all');
   </script>
 <script>
   if (window.location.protocol !== 'file:' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
