@@ -90,7 +90,22 @@
       <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
       <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
 
-      <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
+      <!-- PARTICIPATING STATES DROPDOWN -->
+      <div class="relative">
+        <button id="stateDropdownBtn" class="inline-flex items-center gap-1 text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5 focus:outline-none">
+          Participating States
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        <div id="stateDropdownMenu" class="hidden absolute left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-lg ring-1 ring-black/10 py-2 z-50">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-custom-green">Kano</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-custom-green">Abuja (FCT)</a>
+        </div>
+      </div>
+
       <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
       <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
       <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
@@ -131,7 +146,20 @@
       <a href="/advertisements" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Advertisements</a>
       <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
 
-      <a href="/participating-states" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Participating States</a>
+      <!-- Mobile dropdown -->
+      <div class="border-t border-white/10 pt-2">
+        <button id="mobileStatesBtn" class="w-full flex justify-between items-center py-2 text-left focus:outline-none focus:ring-2 focus:ring-[#aaff33]">
+          Participating States
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div id="mobileStatesMenu" class="hidden pl-4 space-y-1">
+          <a href="#" class="block py-1 text-sm text-gray-100 hover:text-[#aaff33]">Kano</a>
+          <a href="#" class="block py-1 text-sm text-gray-100 hover:text-[#aaff33]">Abuja (FCT)</a>
+        </div>
+      </div>
+
       <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
       <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
       <a href="/contact" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Contact</a>
@@ -139,6 +167,28 @@
   </div>
 </header>
 
+<!-- Dropdown Script -->
+<script>
+  // Desktop dropdown
+  const stateBtn = document.getElementById('stateDropdownBtn');
+  const stateMenu = document.getElementById('stateDropdownMenu');
+
+  document.addEventListener('click', (e) => {
+    if (stateBtn.contains(e.target)) {
+      stateMenu.classList.toggle('hidden');
+    } else if (!stateMenu.contains(e.target)) {
+      stateMenu.classList.add('hidden');
+    }
+  });
+
+  // Mobile dropdown
+  const mobileBtn = document.getElementById('mobileStatesBtn');
+  const mobileMenu = document.getElementById('mobileStatesMenu');
+  mobileBtn?.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileBtn.querySelector('svg').classList.toggle('rotate-180');
+  });
+</script>
 
 
   <!-- ===== Banner ===== -->
@@ -226,7 +276,7 @@
       
       <!-- Partner 1 -->
       <div class="h-32 w-64 flex items-center justify-center bg-white rounded-xl shadow hover:shadow-lg transition">
-        <img src="images/ministry_of_water.jpeg" alt="Ministry of Water Resource"
+        <img src="images/ water_ministry.jpeg" alt="Ministry of Power"
              class="h-20 w-auto object-contain rounded-md" loading="lazy" decoding="async" />
       </div>
 
