@@ -63,7 +63,7 @@
         <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
         <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
         <a href="/news" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
-        <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
+        <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5 font-bold">Participating States</a>
         <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
         <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
         <a href="/resources" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
@@ -103,31 +103,27 @@
     </div>
   </header>
 
-  <section class="relative w-full h-64 flex items-center justify-center bg-cover bg-center" style="background-image: url('../../images/solar2.jpg');">
-    <div class="absolute inset-0 bg-green-900 bg-opacity-70"></div>
-    <div class="relative z-10 text-center px-4 sm:px-6">
-      <nav class="text-sm text-white/80 mb-4 inline-flex items-center gap-2">
-        <a href="/" class="hover:text-white">Home</a>
-        <span class="text-white/60">/</span>
-        <a href="/participating-states" class="hover:text-white">Participating States</a>
-        <span class="text-white/60">/</span>
+  <section class="relative w-full h-64 md:h-80 flex items-center justify-center bg-cover bg-center" style="background-image: url('../../images/solar2.jpg');">
+    <div class="absolute inset-0 bg-gradient-to-r from-green-900/95 to-green-800/70 mix-blend-multiply transition-opacity duration-700"></div>
+    <div class="relative z-10 text-center px-4 sm:px-6 transform translate-y-0 opacity-100 transition-all duration-1000 ease-out">
+      <nav class="text-sm text-white mb-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-lg">
+        <a href="/" class="hover:text-[#aaff33] transition-colors">Home</a>
+        <span class="text-white/50">/</span>
+        <a href="/participating-states" class="hover:text-[#aaff33] transition-colors">Participating States</a>
+        <span class="text-white/50">/</span>
         <span class="font-semibold text-white">Kano State</span>
       </nav>
-      <h1 class="text-3xl md:text-5xl font-extrabold text-white max-w-4xl mx-auto">Kano State</h1>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white max-w-4xl mx-auto tracking-tight drop-shadow-md">Kano State</h1>
     </div>
   </section>
 
-  <img src="../../images/kano.png" alt="Kano State Map" class="w-full rounded-lg shadow-lg mb-8">
-
   <main id="main" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 space-y-16">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 space-y-16">
+      <img src="../../images/kano.png" alt="Kano State Map" class="w-full rounded-lg shadow-lg mb-8">
       <div class="space-y-6">
-        <p class="text-lg text-gray-700 leading-relaxed">
-          Kano State is a dedicated participant in the Sustainable Power and Irrigation for Nigeria (SPIN) project, focusing on improving agricultural productivity through sustainable irrigation systems. The state has selected Model 2, which involves the state taking the lead in developing and managing its irrigation schemes. To achieve its agricultural goals, Kano State has chosen the Kano River Irrigation Project for rehabilitation and expansion under the SPIN project.
-        </p>
-        <p class="text-lg text-gray-700 leading-relaxed">
-          The Kano River Irrigation Project is located at coordinates Lat: 12°0'30.00"N and Long: 8°31'30.00"E. The SPIN project in Kano State is being coordinated by the designated state coordinator, Dr. Ibrahim Suleiman. Stakeholders can contact the coordinator via email at ibrahim.suleiman@kanostate.gov.ng.
-        </p>
+        <p class="text-lg text-slate-600 leading-relaxed">Recognized for its vast agricultural potential, Kano State is participating in the SPIN project through the Model 2 pathway. This State Irrigation Scheme model allows Kano to directly rehabilitate and expand its state-owned dams and irrigation networks. The state has put forward the Jakara Irrigation scheme for development under the program.</p>
+
+        <p class="text-lg text-slate-600 leading-relaxed">The Jakara Irrigation project spans the coordinates of 12.20°N – 12.35°N (Latitude) and 8.60°E – 8.75°E (Longitude). The administration of the project is led by the state coordinator, Nuraddeen Isah Abubakar. Interested parties can contact him via phone at 08037562323 or through email at ahmannur2@gmail.com.</p>
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 pt-16 border-t border-gray-100">
@@ -317,6 +313,8 @@
       }
     });
     sInput?.addEventListener('blur', collapseSearch);
+
+
   </script>
 </body>
 </html>
