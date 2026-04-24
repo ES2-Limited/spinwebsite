@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Grievance Redress Mechanism | SPIN</title>
+  <title>SPIN || Grievance Redress Mechanism</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="images/spin_logo.jpeg" />
@@ -17,14 +17,13 @@
     gtag('config', 'G-K6HTFD29WJ');
   </script>
   <style>
+    /* Modal backdrop */
     #grm-modal.hidden { display: none; }
-    .status-badge { display: inline-flex; align-items: center; border-radius: 9999px; padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700; line-height: 1; }
-    .badge-open { background:#fef3c7; color:#92400e; }
-    .badge-progress { background:#dbeafe; color:#1e40af; }
-    .badge-closed { background:#d1fae5; color:#065f46; }
-    .badge-referred { background:#ede9fe; color:#5b21b6; }
-    .filter-btn { background:#fff; color:#475569; border-color:#e5e7eb; }
-    .filter-btn.active-filter { background:#008C5A; color:#fff; border-color:#008C5A; }
+    /* Status badges */
+    .badge-open       { background:#fef3c7; color:#92400e; }
+    .badge-progress   { background:#dbeafe; color:#1e40af; }
+    .badge-closed     { background:#d1fae5; color:#065f46; }
+    .badge-referred   { background:#ede9fe; color:#5b21b6; }
   </style>
 </head>
 <body class="antialiased font-sans text-gray-900 bg-white">
@@ -38,7 +37,7 @@
   <div class="bg-white shadow-sm border-b border-gray-100">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-2.5 flex items-center justify-between gap-4 text-sm">
       <a href="/" class="flex items-center gap-3 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">
-        <img src="images/spin_logo.jpeg" alt="SPIN Logo" class="h-14 w-auto" />
+        <img src="images/spin_logo.jpeg" alt="SPIN — Sustainable Power Initiative Nigeria" class="h-14 w-auto" />
         <span class="sr-only">Home</span>
       </a>
       <div class="flex items-center space-x-6 md:space-x-8 text-gray-700 text-xs sm:text-sm">
@@ -76,14 +75,14 @@
         <a href="/about" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">About us</a>
         <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
         <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
-        <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
+        <a href="/news" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
         <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
         <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
-        <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
-        <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
+        <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
+        <a href="/resources" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
         <a href="/contact" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Contact</a>
       </nav>
-      <div class="col-start-3 flex justify-end items-center pr-12 md:pr-0">
+      <div class="flex justify-end items-center">
         <div class="relative flex items-center">
           <input id="search-input" type="search" inputmode="search" aria-label="Search site" placeholder="Search..."
                  class="h-10 text-sm bg-white rounded-full text-gray-800 border border-gray-200 shadow-inner px-4 pr-10 transition-all duration-300 ease-in-out absolute right-0 search-collapsed" />
@@ -92,34 +91,37 @@
           </button>
         </div>
       </div>
-      <button id="mobile-menu-button" class="md:hidden absolute right-4 text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+      <button id="mobile-menu-button" class="md:hidden absolute -right-4 text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m0 6H4"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 bg-[#008C5A]/95 backdrop-blur">
+    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 bg-custom-green/95 backdrop-blur">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-3 space-y-1 text-white/95">
         <a href="/" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Home</a>
         <a href="/about" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">About us</a>
         <a href="/mandate" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Mandate</a>
         <a href="/advertisements" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Advertisements</a>
+        <a href="/news" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
         <a href="/participating-states" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Participating States</a>
         <a href="/gallery" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
+        <a href="/project" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
+        <a href="/resources" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Resources</a>
         <a href="/contact" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Contact</a>
       </div>
     </div>
   </header>
 
   <!-- ===== Hero Banner ===== -->
-  <section class="relative w-full h-64 md:h-80 flex items-center justify-center bg-cover bg-center" style="background-image: url('images/solar2.jpg');">
+  <section class="relative w-full h-64 flex items-center justify-center bg-cover bg-center" style="background-image: url('images/solar2.jpg');">
     <div class="absolute inset-0 bg-gradient-to-r from-green-900/95 to-green-800/70 mix-blend-multiply"></div>
-    <div class="relative z-10 text-center text-white px-4 sm:px-6">
+    <div class="relative z-10 text-center text-white">
       <nav class="text-sm mb-6 inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-full border border-white/20 shadow-lg">
         <a href="/" class="hover:text-[#aaff33] transition-colors">Home</a>
         <span class="text-white/50 px-1">/</span>
         <span class="font-semibold">Grievance Redress</span>
       </nav>
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-md">Grievance Redress Mechanism</h1>
-      <p class="mt-4 text-white/80 text-lg max-w-2xl mx-auto">Submit a project concern or track the status of an existing grievance.</p>
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight drop-shadow-md">Grievance Redress</h1>
+      <p class="mt-3 text-white/80 text-lg">Your voice matters. We are listening.</p>
     </div>
   </section>
 
@@ -127,20 +129,21 @@
   <main id="main">
 
     <!-- About the GRM -->
-    <section class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-20">
-      <div class="grid gap-10 lg:grid-cols-[1.15fr_.85fr] items-start">
-        <div class="space-y-6">
+    <section class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-10 py-14">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
           <span class="inline-block bg-[#aaff33]/20 text-[#008C5A] font-semibold text-sm px-3 py-1 rounded-full mb-4">GRM Portal</span>
-          <h2 class="text-3xl font-extrabold text-gray-900">A clear channel for project concerns</h2>
-          <p class="text-lg text-slate-600 leading-relaxed">
+          <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Grievance Redress Mechanism</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
             The SPIN Project is committed to transparent and fair project implementation. If you have a concern, complaint, or grievance related to project activities in your community, you can submit it here and it will be reviewed by the project team.
           </p>
-          <p class="text-lg text-slate-600 leading-relaxed">
+          <p class="text-gray-600 leading-relaxed mb-6">
             All grievances are logged, tracked, and responded to. You can monitor the status of reported issues in the public tracker below.
           </p>
-          <div class="bg-gray-50 rounded-lg p-6 border border-gray-100">
-            <h3 class="font-bold text-gray-900 mb-4 text-sm uppercase tracking-wide">Common types of grievances</h3>
-            <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-slate-600">
+          <!-- What can be reported -->
+          <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+            <h3 class="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wide">Common types of grievances</h3>
+            <ul class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600">
               <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#008C5A] flex-shrink-0"></span>Wrong Name</li>
               <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#008C5A] flex-shrink-0"></span>Increase in Farm Size</li>
               <li class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#008C5A] flex-shrink-0"></span>Decrease in Farm Size</li>
@@ -154,60 +157,64 @@
             </ul>
           </div>
         </div>
-        <div class="flex flex-col items-center text-center rounded-lg border border-green-100 bg-gradient-to-br from-green-50 to-white p-8 text-gray-900 shadow-md">
-          <div class="w-16 h-16 rounded-full bg-[#008C5A]/10 text-custom-green flex items-center justify-center mb-5">
+        <!-- CTA -->
+        <div class="flex flex-col items-center text-center bg-gradient-to-br from-[#008C5A] to-[#005c3a] rounded-2xl p-10 text-white shadow-xl">
+          <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-5">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           </div>
-          <h3 class="text-2xl font-extrabold mb-3">Lodge a Complaint</h3>
-          <p class="text-slate-600 text-sm mb-8 max-w-sm">Fill out the grievance form and the SPIN project team will review your concern.</p>
+          <h3 class="text-2xl font-extrabold mb-2">Have a Complaint?</h3>
+          <p class="text-white/80 text-sm mb-8 max-w-xs">Fill out the grievance form and the SPIN project team will review your concern and get back to you.</p>
           <button id="open-form-btn"
-                  class="bg-custom-green text-white font-bold px-8 py-3.5 rounded-md shadow-md hover:bg-[#007048] transition-all duration-200 text-base focus:outline-none focus:ring-4 focus:ring-[#008C5A]/30">
+                  class="bg-[#aaff33] text-gray-900 font-bold px-8 py-3.5 rounded-full shadow-lg hover:bg-[#99ee22] transition-all duration-200 text-base focus:outline-none focus:ring-4 focus:ring-[#aaff33]/50">
             Lodge a Complaint
           </button>
-          <p class="mt-4 text-slate-500 text-xs">Your identity remains confidential in the public tracker.</p>
+          <p class="mt-4 text-white/60 text-xs">Your identity remains confidential in the public tracker.</p>
         </div>
       </div>
     </section>
 
     <!-- ===== Public Tracker ===== -->
-    <section class="bg-gray-50 border-t border-gray-100 py-20" id="tracker">
-      <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
+    <section class="bg-gray-50 border-t border-gray-100 py-14" id="tracker">
+      <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-10">
         <div class="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div>
             <h2 class="text-2xl font-extrabold text-gray-900">Grievance Tracker</h2>
             <p class="text-gray-500 text-sm mt-1">Live list of all submitted grievances and their current status.</p>
           </div>
+          <!-- Filter tabs -->
           <div class="flex gap-2 flex-wrap">
-            <button type="button" data-filter="all" aria-pressed="true" class="filter-btn active-filter text-sm px-4 py-2 rounded-md border font-semibold transition">All</button>
-            <button type="button" data-filter="open" aria-pressed="false" class="filter-btn text-sm px-4 py-2 rounded-md border font-semibold transition">Open</button>
-            <button type="button" data-filter="in progress" aria-pressed="false" class="filter-btn text-sm px-4 py-2 rounded-md border font-semibold transition">In Progress</button>
-            <button type="button" data-filter="closed" aria-pressed="false" class="filter-btn text-sm px-4 py-2 rounded-md border font-semibold transition">Closed</button>
+            <button onclick="filterTable('all')"    class="filter-btn active-filter text-sm px-4 py-1.5 rounded-full border font-semibold transition">All</button>
+            <button onclick="filterTable('open')"   class="filter-btn text-sm px-4 py-1.5 rounded-full border font-semibold transition">Open</button>
+            <button onclick="filterTable('in progress')" class="filter-btn text-sm px-4 py-1.5 rounded-full border font-semibold transition">In Progress</button>
+            <button onclick="filterTable('closed')" class="filter-btn text-sm px-4 py-1.5 rounded-full border font-semibold transition">Closed</button>
           </div>
         </div>
 
+        <!-- Stats row -->
         <div id="tracker-stats" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 hidden">
-          <div class="bg-white rounded-lg p-4 border border-gray-100 shadow-sm text-center">
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
             <p class="text-2xl font-extrabold text-gray-900" id="stat-total">—</p>
             <p class="text-xs text-gray-500 mt-1">Total Submitted</p>
           </div>
-          <div class="bg-white rounded-lg p-4 border border-gray-100 shadow-sm text-center">
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
             <p class="text-2xl font-extrabold text-amber-600" id="stat-open">—</p>
             <p class="text-xs text-gray-500 mt-1">Open</p>
           </div>
-          <div class="bg-white rounded-lg p-4 border border-gray-100 shadow-sm text-center">
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
             <p class="text-2xl font-extrabold text-blue-600" id="stat-progress">—</p>
             <p class="text-xs text-gray-500 mt-1">In Progress</p>
           </div>
-          <div class="bg-white rounded-lg p-4 border border-gray-100 shadow-sm text-center">
+          <div class="bg-white rounded-xl p-4 border border-gray-100 shadow-sm text-center">
             <p class="text-2xl font-extrabold text-emerald-600" id="stat-closed">—</p>
             <p class="text-xs text-gray-500 mt-1">Resolved</p>
           </div>
         </div>
 
-        <div class="overflow-x-auto rounded-lg shadow-sm border border-gray-100 bg-white">
-          <table class="w-full min-w-[760px] text-sm bg-white">
-            <thead class="bg-gray-50/80">
-              <tr class="text-xs uppercase tracking-wide text-gray-500">
+        <!-- Table -->
+        <div class="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
+          <table class="w-full text-sm bg-white">
+            <thead>
+              <tr class="bg-[#008C5A] text-white text-xs uppercase tracking-wide">
                 <th class="px-4 py-3 text-left">Grievance No.</th>
                 <th class="px-4 py-3 text-left">State</th>
                 <th class="px-4 py-3 text-left">Nature</th>
@@ -273,7 +280,7 @@
           <p class="mt-4 text-xs text-gray-400">Email: <a href="mailto:info@spinproject.ng" class="hover:text-[#aaff33]">info@spinproject.ng</a></p>
         </div>
       </div>
-      <p class="text-center text-sm text-gray-400">&copy; 2025 SPIN Project. All rights reserved. Supported by the World Bank.</p>
+      <p class="text-center text-sm text-gray-400">&copy; 2025 SPIN Project. All rights reserved. Supported by the World Bank.<br> Developed by <a href="https://es2.com.ng" target="_blank" class="text-[#aaff33] hover:underline">ES2 LIMITED</a></p>
     </div>
   </footer>
 
@@ -282,9 +289,9 @@
     <!-- Backdrop -->
     <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
     <!-- Panel -->
-    <div class="relative bg-white rounded-lg shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
       <!-- Header -->
-      <div class="sticky top-0 bg-[#008C5A] text-white px-6 py-4 rounded-t-lg flex items-center justify-between z-10">
+      <div class="sticky top-0 bg-[#008C5A] text-white px-6 py-4 rounded-t-2xl flex items-center justify-between z-10">
         <div>
           <h2 id="modal-title" class="text-lg font-extrabold">Lodge a Grievance</h2>
           <p class="text-white/70 text-xs mt-0.5">SPIN Project — Grievance Redress Mechanism</p>
@@ -299,40 +306,41 @@
         <!-- State -->
         <div>
           <label for="f-state" class="block text-sm font-semibold text-gray-700 mb-1">State <span class="text-red-500">*</span></label>
-          <select id="f-state" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]">
+          <select id="f-state" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
             <option value="">— Select State —</option>
             <option>Adamawa</option><option>Bauchi</option><option>Benue</option>
-            <option>Ebonyi</option><option>Ekiti</option><option>Enugu</option>
-            <option>Kogi</option><option>Kwara</option><option>Nasarawa</option>
-            <option>Plateau</option><option>Cross-River</option><option>Gombe</option>
-            <option>Jigawa</option><option>Kaduna</option><option>Kano</option>
-            <option>Katsina</option><option>Kebbi</option><option>Niger</option>
-            <option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+            <option>Cross River</option><option>Ebonyi</option><option>Ekiti</option>
+            <option>Enugu</option><option>Gombe</option><option>Jigawa</option>
+            <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+            <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+            <option>Nasarawa</option><option>Niger</option><option>Plateau</option>
+            <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+            <option>Zamfara</option>
           </select>
         </div>
 
         <!-- Name -->
         <div>
           <label for="f-name" class="block text-sm font-semibold text-gray-700 mb-1">Your Full Name <span class="text-red-500">*</span></label>
-          <input id="f-name" type="text" placeholder="e.g. Musa Abdullahi" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]" />
+          <input id="f-name" type="text" placeholder="e.g. Musa Abdullahi" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
         </div>
 
         <!-- Phone + Email -->
         <div class="grid sm:grid-cols-2 gap-4">
           <div>
             <label for="f-phone" class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
-            <input id="f-phone" type="tel" placeholder="+234 800 000 0000" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]" />
+            <input id="f-phone" type="tel" placeholder="+234 800 000 0000" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
           </div>
           <div>
             <label for="f-email" class="block text-sm font-semibold text-gray-700 mb-1">Email Address <span class="text-gray-400 font-normal">(optional)</span></label>
-            <input id="f-email" type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]" />
+            <input id="f-email" type="email" placeholder="you@example.com" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]" />
           </div>
         </div>
 
         <!-- Medium -->
         <div>
           <label for="f-medium" class="block text-sm font-semibold text-gray-700 mb-1">How are you submitting this? <span class="text-red-500">*</span></label>
-          <select id="f-medium" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]">
+          <select id="f-medium" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
             <option value="">— Select Medium —</option>
             <option>Online (Web Form)</option>
             <option>Walk-in</option>
@@ -345,7 +353,7 @@
         <!-- Nature -->
         <div>
           <label for="f-nature" class="block text-sm font-semibold text-gray-700 mb-1">Nature of Grievance <span class="text-red-500">*</span></label>
-          <select id="f-nature" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A]">
+          <select id="f-nature" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A]">
             <option value="">— Select Nature —</option>
             <option>Wrong Name</option>
             <option>Increase in Farm Size</option>
@@ -363,18 +371,18 @@
         <!-- Details -->
         <div>
           <label for="f-details" class="block text-sm font-semibold text-gray-700 mb-1">Details of Grievance <span class="text-red-500">*</span></label>
-          <textarea id="f-details" rows="5" placeholder="Please describe your grievance in detail…" class="w-full border border-gray-300 rounded-md px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] focus:border-[#008C5A] resize-none"></textarea>
+          <textarea id="f-details" rows="5" placeholder="Please describe your grievance in detail…" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#008C5A] resize-none"></textarea>
         </div>
 
         <!-- Error message -->
-        <p id="form-error" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-md px-4 py-3"></p>
+        <p id="form-error" class="hidden text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3"></p>
 
         <!-- Submit -->
         <div class="flex gap-3 pt-1">
-          <button id="submit-btn" class="flex-1 bg-[#008C5A] hover:bg-[#006e47] disabled:cursor-not-allowed disabled:opacity-60 text-white font-bold py-3 rounded-md transition focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40 text-sm">
+          <button id="submit-btn" class="flex-1 bg-[#008C5A] hover:bg-[#006e47] text-white font-bold py-3 rounded-xl transition focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40 text-sm">
             Submit Grievance
           </button>
-          <button id="cancel-btn" class="px-5 py-3 rounded-md border border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-semibold transition">Cancel</button>
+          <button id="cancel-btn" class="px-5 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-50 text-sm font-semibold transition">Cancel</button>
         </div>
       </div>
 
@@ -387,141 +395,98 @@
         <p class="text-gray-500 text-sm mb-1">Your grievance reference number is:</p>
         <p id="success-ref" class="text-2xl font-extrabold text-[#008C5A] mb-5">—</p>
         <p class="text-gray-500 text-sm max-w-sm mx-auto mb-8">Please save this reference number. The SPIN project team will review your complaint and you will hear back from us. You can track the status of your grievance in the public tracker below.</p>
-        <button id="close-success-btn" class="bg-[#008C5A] text-white font-bold px-8 py-3 rounded-md hover:bg-[#006e47] transition text-sm focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40">Close</button>
+        <button id="close-success-btn" class="bg-[#008C5A] text-white font-bold px-8 py-3 rounded-full hover:bg-[#006e47] transition text-sm focus:outline-none focus:ring-4 focus:ring-[#008C5A]/40">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    var APPS_SCRIPT_URL = "https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec";
-    var APPS_SCRIPT_CONFIGURED = APPS_SCRIPT_URL.indexOf("YOUR_DEPLOYMENT_ID") === -1;
+    // ── APPS SCRIPT WEB APP URL ──────────────────────────────
+    // Replace this with your deployed Apps Script Web App URL
+    var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyj1alXQ67d5WHGDWpG2T2XGZHna_R-SBTE-IcZhpgg_49gjHP21HfATZR22w3hzWvaIg/exec";
 
-    var modal = document.getElementById("grm-modal");
+    // ── MODAL ────────────────────────────────────────────────
+    var modal    = document.getElementById("grm-modal");
     var formBody = document.getElementById("form-body");
-    var success = document.getElementById("form-success");
-    var formError = document.getElementById("form-error");
-    var submitBtn = document.getElementById("submit-btn");
-    var allRows = [];
-    var activeFilter = "all";
+    var success  = document.getElementById("form-success");
 
-    function escapeHtml(value) {
-      var map = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" };
-      return String(value == null ? "" : value).replace(/[&<>"']/g, function(match) { return map[match]; });
-    }
-
-    function showFormError(message) {
-      formError.textContent = message;
-      formError.classList.remove("hidden");
-    }
-
-    function resetForm() {
-      ["f-state", "f-name", "f-phone", "f-email", "f-medium", "f-nature", "f-details"].forEach(function(id) {
-        document.getElementById(id).value = "";
-      });
-      formError.classList.add("hidden");
-    }
-
-    function openModal() {
-      modal.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-      setTimeout(function() { document.getElementById("f-state").focus(); }, 50);
-    }
-
-    function closeModal() {
-      modal.classList.add("hidden");
-      document.body.style.overflow = "";
-      formBody.classList.remove("hidden");
-      success.classList.add("hidden");
-      resetForm();
-    }
-
-    function setSubmitting(isSubmitting) {
-      submitBtn.disabled = isSubmitting;
-      submitBtn.textContent = isSubmitting ? "Submitting..." : "Submit Grievance";
-    }
+    function openModal()  { modal.classList.remove("hidden"); document.body.style.overflow = "hidden"; }
+    function closeModal() { modal.classList.add("hidden");    document.body.style.overflow = "";
+                            formBody.classList.remove("hidden"); success.classList.add("hidden"); resetForm(); }
 
     document.getElementById("open-form-btn").addEventListener("click", openModal);
     document.getElementById("close-modal-btn").addEventListener("click", closeModal);
     document.getElementById("cancel-btn").addEventListener("click", closeModal);
     document.getElementById("modal-backdrop").addEventListener("click", closeModal);
     document.getElementById("close-success-btn").addEventListener("click", function() {
-      closeModal();
-      loadTracker();
+      closeModal(); loadTracker();
     });
 
-    document.addEventListener("keydown", function(e) {
-      if (e.key === "Escape" && !modal.classList.contains("hidden")) closeModal();
-    });
+    document.addEventListener("keydown", function(e) { if (e.key === "Escape") closeModal(); });
 
-    submitBtn.addEventListener("click", function() {
-      var state = document.getElementById("f-state").value.trim();
-      var name = document.getElementById("f-name").value.trim();
-      var phone = document.getElementById("f-phone").value.trim();
-      var email = document.getElementById("f-email").value.trim();
-      var medium = document.getElementById("f-medium").value.trim();
-      var nature = document.getElementById("f-nature").value.trim();
+    // ── FORM VALIDATION & SUBMIT ─────────────────────────────
+    function resetForm() {
+      ["f-state","f-name","f-phone","f-email","f-medium","f-nature","f-details"].forEach(function(id) {
+        document.getElementById(id).value = "";
+      });
+      document.getElementById("form-error").classList.add("hidden");
+    }
+
+    document.getElementById("submit-btn").addEventListener("click", function() {
+      var state   = document.getElementById("f-state").value.trim();
+      var name    = document.getElementById("f-name").value.trim();
+      var phone   = document.getElementById("f-phone").value.trim();
+      var email   = document.getElementById("f-email").value.trim();
+      var medium  = document.getElementById("f-medium").value.trim();
+      var nature  = document.getElementById("f-nature").value.trim();
       var details = document.getElementById("f-details").value.trim();
+      var errEl   = document.getElementById("form-error");
 
       if (!state || !name || !medium || !nature || !details) {
-        showFormError("Please fill in all required fields marked with *.");
+        errEl.textContent = "Please fill in all required fields (marked with *).";
+        errEl.classList.remove("hidden");
         return;
       }
+      errEl.classList.add("hidden");
 
-      if (!APPS_SCRIPT_CONFIGURED) {
-        showFormError("The grievance form is not connected yet. Please contact info@spinproject.ng.");
-        return;
-      }
-
-      formError.classList.add("hidden");
-      setSubmitting(true);
+      var btn = document.getElementById("submit-btn");
+      btn.disabled = true;
+      btn.textContent = "Submitting…";
 
       fetch(APPS_SCRIPT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "submit", state: state, name: name, phone: phone, email: email, medium: medium, nature: nature, details: details })
+        body: JSON.stringify({ action:"submit", state:state, name:name, phone:phone, email:email, medium:medium, nature:nature, details:details })
       })
       .then(function(r) { return r.json(); })
       .then(function(data) {
         if (data.success) {
-          document.getElementById("success-ref").textContent = data.grievanceNo || "Submitted";
+          document.getElementById("success-ref").textContent = data.grievanceNo;
           formBody.classList.add("hidden");
           success.classList.remove("hidden");
         } else {
-          showFormError("Submission failed: " + (data.error || "Please try again."));
+          errEl.textContent = "Submission failed: " + (data.error || "Unknown error. Please try again.");
+          errEl.classList.remove("hidden");
         }
       })
       .catch(function() {
-        showFormError("Network error. Please check your connection and try again.");
+        errEl.textContent = "Network error. Please check your connection and try again.";
+        errEl.classList.remove("hidden");
       })
       .finally(function() {
-        setSubmitting(false);
+        btn.disabled = false;
+        btn.textContent = "Submit Grievance";
       });
     });
 
-    function normalizeStatus(value) {
-      return String(value || "open").trim().toLowerCase();
-    }
+    // ── PUBLIC TRACKER ────────────────────────────────────────
+    var allRows = [];
+    var activeFilter = "all";
 
-    function statusBadge(status) {
-      var label = status || "Open";
-      var lower = normalizeStatus(label);
-      var cls = lower === "closed" ? "badge-closed" : lower.indexOf("progress") !== -1 ? "badge-progress" : lower === "referred" ? "badge-referred" : "badge-open";
-      return '<span class="status-badge ' + cls + '">' + escapeHtml(label) + '</span>';
-    }
-
-    function formatDate(value) {
-      if (!value) return "—";
-      var parsed = new Date(value);
-      if (Number.isNaN(parsed.getTime())) return "—";
-      return parsed.toLocaleDateString("en-NG", { day: "2-digit", month: "short", year: "numeric" });
-    }
-
-    function getFilteredRows(filter) {
-      if (filter === "all") return allRows;
-      return allRows.filter(function(row) {
-        var status = normalizeStatus(row.status);
-        return filter === "in progress" ? status.indexOf("progress") !== -1 : status === filter;
-      });
+    function statusBadge(s) {
+      var lower = (s || "open").toLowerCase();
+      var cls   = lower === "closed" ? "badge-closed" : lower.includes("progress") ? "badge-progress" : lower === "referred" ? "badge-referred" : "badge-open";
+      return '<span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold ' + cls + '">' + (s || "Open") + '</span>';
     }
 
     function renderTable(rows) {
@@ -530,53 +495,44 @@
         tbody.innerHTML = '<tr><td colspan="5" class="text-center py-10 text-gray-400">No grievances found for this filter.</td></tr>';
         return;
       }
-
-      tbody.innerHTML = rows.map(function(row, i) {
-        return '<tr class="' + (i % 2 === 0 ? "bg-white" : "bg-gray-50") + ' border-b border-gray-100 hover:bg-green-50/40 transition">' +
-          '<td class="px-4 py-3 font-mono text-xs text-[#008C5A] font-semibold">' + escapeHtml(row.grievanceNo || "—") + '</td>' +
-          '<td class="px-4 py-3 text-sm">' + escapeHtml(row.state || "—") + '</td>' +
-          '<td class="px-4 py-3 text-sm">' + escapeHtml(row.nature || "—") + '</td>' +
-          '<td class="px-4 py-3 text-sm text-gray-500">' + escapeHtml(formatDate(row.date)) + '</td>' +
-          '<td class="px-4 py-3">' + statusBadge(row.status) + '</td>' +
+      tbody.innerHTML = rows.map(function(r, i) {
+        var date = r.date ? new Date(r.date).toLocaleDateString("en-NG", {day:"2-digit",month:"short",year:"numeric"}) : "—";
+        return '<tr class="' + (i%2===0?"bg-white":"bg-gray-50") + ' border-b border-gray-100 hover:bg-green-50/40 transition">' +
+          '<td class="px-4 py-3 font-mono text-xs text-[#008C5A] font-semibold">' + (r.grievanceNo||"—") + '</td>' +
+          '<td class="px-4 py-3 text-sm">' + (r.state||"—") + '</td>' +
+          '<td class="px-4 py-3 text-sm">' + (r.nature||"—") + '</td>' +
+          '<td class="px-4 py-3 text-sm text-gray-500">' + date + '</td>' +
+          '<td class="px-4 py-3">' + statusBadge(r.status) + '</td>' +
         '</tr>';
       }).join("");
     }
 
-    function setActiveFilter(filter) {
-      activeFilter = filter;
-      document.querySelectorAll(".filter-btn").forEach(function(button) {
-        var isActive = button.dataset.filter === filter;
-        button.classList.toggle("active-filter", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
-      });
-    }
-
-    function updateStats() {
-      var total = allRows.length;
-      var open = allRows.filter(function(row) { return normalizeStatus(row.status) === "open"; }).length;
-      var progress = allRows.filter(function(row) { return normalizeStatus(row.status).indexOf("progress") !== -1; }).length;
-      var closed = allRows.filter(function(row) { return normalizeStatus(row.status) === "closed"; }).length;
-
-      document.getElementById("stat-total").textContent = total;
-      document.getElementById("stat-open").textContent = open;
-      document.getElementById("stat-progress").textContent = progress;
-      document.getElementById("stat-closed").textContent = closed;
-      document.getElementById("tracker-stats").classList.remove("hidden");
+    function filterTable(f) {
+      activeFilter = f;
+      document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.remove("active-filter","bg-[#008C5A]","text-white"); b.classList.add("bg-white","text-gray-600"); });
+      event.target.classList.add("active-filter","bg-[#008C5A]","text-white");
+      event.target.classList.remove("bg-white","text-gray-600");
+      var filtered = f === "all" ? allRows : allRows.filter(function(r) { return (r.status||"open").toLowerCase() === f; });
+      renderTable(filtered);
     }
 
     function loadTracker() {
-      if (!APPS_SCRIPT_CONFIGURED) {
-        document.getElementById("tracker-body").innerHTML = '<tr><td colspan="5" class="text-center py-8 text-gray-400 text-sm">Grievance tracker is not connected yet.</td></tr>';
-        return;
-      }
-
       fetch(APPS_SCRIPT_URL + "?action=getPublic")
         .then(function(r) { return r.json(); })
         .then(function(data) {
           if (data.success) {
             allRows = data.data || [];
-            updateStats();
-            renderTable(getFilteredRows(activeFilter));
+            // Stats
+            var total = allRows.length;
+            var open  = allRows.filter(function(r) { return (r.status||"open").toLowerCase() === "open"; }).length;
+            var prog  = allRows.filter(function(r) { return (r.status||"").toLowerCase().includes("progress"); }).length;
+            var closed= allRows.filter(function(r) { return (r.status||"").toLowerCase() === "closed"; }).length;
+            document.getElementById("stat-total").textContent   = total;
+            document.getElementById("stat-open").textContent    = open;
+            document.getElementById("stat-progress").textContent= prog;
+            document.getElementById("stat-closed").textContent  = closed;
+            document.getElementById("tracker-stats").classList.remove("hidden");
+            renderTable(allRows);
           } else {
             document.getElementById("tracker-body").innerHTML = '<tr><td colspan="5" class="text-center py-8 text-gray-400 text-sm">Could not load tracker data. Please try again later.</td></tr>';
           }
@@ -586,35 +542,26 @@
         });
     }
 
-    document.querySelectorAll(".filter-btn").forEach(function(button) {
-      button.addEventListener("click", function() {
-        setActiveFilter(button.dataset.filter);
-        renderTable(getFilteredRows(activeFilter));
-      });
-    });
+    // Init filter buttons styles
+    document.querySelectorAll(".filter-btn").forEach(function(b) { b.classList.add("bg-white","text-gray-600","border-gray-200"); });
+    document.querySelector(".active-filter").classList.add("bg-[#008C5A]","text-white","border-[#008C5A]");
 
+    // Load tracker on page load
     loadTracker();
 
+    // Mobile menu
     var mBtn = document.getElementById("mobile-menu-button");
     var mMenu = document.getElementById("mobile-menu");
-    if (mBtn && mMenu) {
-      mBtn.addEventListener("click", function() {
-        var expanded = mBtn.getAttribute("aria-expanded") === "true";
-        mBtn.setAttribute("aria-expanded", String(!expanded));
-        mMenu.classList.toggle("hidden");
-      });
-    }
+    if (mBtn) mBtn.addEventListener("click", function() { mMenu.classList.toggle("hidden"); });
 
+    // Search toggle
     var sToggle = document.getElementById("search-toggle");
-    var sInput = document.getElementById("search-input");
+    var sInput  = document.getElementById("search-input");
     if (sToggle && sInput) {
       sToggle.addEventListener("click", function() {
-        var collapsed = sInput.classList.contains("search-collapsed");
-        sInput.classList.toggle("search-collapsed", !collapsed);
-        sInput.classList.toggle("search-expanded", collapsed);
-        sToggle.setAttribute("aria-expanded", String(collapsed));
-        sToggle.setAttribute("aria-label", collapsed ? "Close search" : "Open search");
-        if (collapsed) sInput.focus();
+        sInput.classList.toggle("search-collapsed");
+        sInput.classList.toggle("search-expanded");
+        if (!sInput.classList.contains("search-collapsed")) sInput.focus();
       });
     }
   </script>

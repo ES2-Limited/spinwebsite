@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SPIN || Sustainable Power and Irrigationfor Nigeria Project (SPIN)</title>
+  <title>SPIN || Sustainable Power and Irrigation for Nigeria Project (SPIN)</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -88,13 +88,11 @@
       <a href="/about" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">About us</a>
       <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
       <a href="/advertisements" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Advertisements</a>
-      <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
-
+      <a href="/news" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">News</a>
       <a href="/participating-states" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Participating States</a>
-
       <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
-      <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
-      <a href="#" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
+      <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
+      <a href="/resources" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
       <a href="/contact" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Contact</a>
     </nav>
 
@@ -130,40 +128,16 @@
       <a href="/about" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">About us</a>
       <a href="/mandate" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Mandate</a>
       <a href="/advertisements" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Advertisements</a>
-      <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
-
+      <a href="/news" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">News</a>
       <a href="/participating-states" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Participating States</a>
-
-      <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
-      <a href="#" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
+      <a href="/gallery" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
+      <a href="/project" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
+      <a href="/resources" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Resources</a>
       <a href="/contact" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Contact</a>
     </div>
   </div>
 </header>
 
-
-<!-- Dropdown Script -->
-<script>
-  // Desktop dropdown
-  const stateBtn = document.getElementById('stateDropdownBtn');
-  const stateMenu = document.getElementById('stateDropdownMenu');
-
-  document.addEventListener('click', (e) => {
-    if (stateBtn.contains(e.target)) {
-      stateMenu.classList.toggle('hidden');
-    } else if (!stateMenu.contains(e.target)) {
-      stateMenu.classList.add('hidden');
-    }
-  });
-
-  // Mobile dropdown
-  const mobileBtn = document.getElementById('mobileStatesBtn');
-  const mobileMenu = document.getElementById('mobileStatesMenu');
-  mobileBtn?.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    mobileBtn.querySelector('svg').classList.toggle('rotate-180');
-  });
-</script>
 
 
   <main id="main">
@@ -469,7 +443,7 @@
           </a>
         </div>
         <p class="mt-4 text-xs text-gray-400">
-          Email: <a href="mailto:admin@spin.com.ng" class="hover:text-[#aaff33]">info@spinproject.ng</a>
+          Email: <a href="mailto:info@spinproject.ng" class="hover:text-[#aaff33]">info@spinproject.ng</a>
         </p>
       </div>
     </div>
@@ -549,8 +523,8 @@
     function nextSlide() { setSlide(idx + 1); }
     function prevSlide() { setSlide(idx - 1); }
 
-    function start() { stop(); if (!autoplay) return; timer = setInterval(nextSlide, DURATION); toggleAutoplayBtn.setAttribute('aria-pressed','true'); toggleAutoplayBtn.textContent='Pause'; }
-    function stop() { if (timer) clearInterval(timer); timer = null; toggleAutoplayBtn.setAttribute('aria-pressed','false'); toggleAutoplayBtn.textContent='Play'; }
+    function start() { stop(); if (!autoplay) return; timer = setInterval(nextSlide, DURATION); toggleAutoplayBtn.setAttribute('aria-pressed','true'); document.getElementById('toggle-text').textContent='Pause'; document.querySelector('#toggle-icon path').setAttribute('d','M10 9v6m4-6v6'); }
+    function stop() { if (timer) clearInterval(timer); timer = null; toggleAutoplayBtn.setAttribute('aria-pressed','false'); document.getElementById('toggle-text').textContent='Play'; document.querySelector('#toggle-icon path').setAttribute('d','M5 3l14 9-14 9V3z'); }
 
     prev?.addEventListener('click', () => { prevSlide(); start(); });
     next?.addEventListener('click', () => { nextSlide(); start(); });
