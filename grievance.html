@@ -455,7 +455,7 @@
 
       fetch(APPS_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify({ action:"submit", state:state, name:name, phone:phone, email:email, medium:medium, nature:nature, details:details })
       })
       .then(function(r) { return r.json(); })
