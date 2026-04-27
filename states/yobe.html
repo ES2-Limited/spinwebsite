@@ -248,11 +248,6 @@
   </footer>
 
   <script>
-    if (window.location.pathname.endsWith('.html')) {
-      const cleanUrl = window.location.pathname.replace('.html', '');
-      window.location.replace(cleanUrl);
-    }
-
     const menuBtn = document.getElementById('mobile-menu-button');
     const menuPanel = document.getElementById('mobile-menu');
     menuBtn?.addEventListener('click', () => {
