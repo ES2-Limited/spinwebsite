@@ -55,7 +55,7 @@
             <p class="font-semibold text-black">info@spinproject.ng</p>
           </div>
         </div>
-        <div class="flex items-center space-x-2 hidden md:flex">
+        <div class="hidden lg:flex items-center space-x-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-custom-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L12 22l-5.657-5.343A8 8 0 1117.657 16.657zM12 13a3 3 0 100-6 3 3 0 000 6z"/></svg>
           <div class="hidden sm:block">
             <p class="text-xs text-gray-500">Find us at</p>
@@ -68,9 +68,9 @@
 
   <!-- ===== Nav ===== -->
   <header class="bg-custom-green sticky top-0 z-50 shadow">
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 grid items-center" style="grid-template-columns: 1fr auto 1fr;">
-      <div class="hidden md:block"></div>
-      <nav aria-label="Primary" class="hidden md:flex justify-center items-center gap-6 text-[0.95rem] font-semibold relative">
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 h-14 relative flex items-center justify-end xl:grid" style="grid-template-columns: 1fr auto 1fr;">
+      <div class="hidden xl:block"></div>
+      <nav aria-label="Primary" class="hidden xl:flex justify-center items-center gap-4 2xl:gap-6 text-[0.85rem] 2xl:text-[0.95rem] font-semibold relative whitespace-nowrap">
         <a href="/" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Home</a>
         <a href="/about" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">About us</a>
         <a href="/mandate" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Mandate</a>
@@ -80,9 +80,10 @@
         <a href="/gallery" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Gallery</a>
         <a href="/project" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Projects</a>
         <a href="/resources" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Resources</a>
+        <a href="/grievance" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Grievance</a>
         <a href="/contact" class="text-white/90 hover:text-white border-b-2 border-transparent hover:border-white px-1.5">Contact</a>
       </nav>
-      <div class="flex justify-end items-center">
+      <div class="hidden xl:flex justify-end items-center">
         <div class="relative flex items-center">
           <input id="search-input" type="search" inputmode="search" aria-label="Search site" placeholder="Search..."
                  class="h-10 text-sm bg-white rounded-full text-gray-800 border border-gray-200 shadow-inner px-4 pr-10 transition-all duration-300 ease-in-out absolute right-0 search-collapsed" />
@@ -91,11 +92,11 @@
           </button>
         </div>
       </div>
-      <button id="mobile-menu-button" class="md:hidden absolute -right-4 text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+      <button id="mobile-menu-button" class="xl:hidden text-white hover:text-white/90 p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m0 6H4"/></svg>
       </button>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden border-t border-white/20 bg-custom-green/95 backdrop-blur">
+    <div id="mobile-menu" class="xl:hidden hidden border-t border-white/20 bg-custom-green/95 backdrop-blur">
       <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-3 space-y-1 text-white/95">
         <a href="/" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Home</a>
         <a href="/about" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">About us</a>
@@ -106,6 +107,7 @@
         <a href="/gallery" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Gallery</a>
         <a href="/project" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Projects</a>
         <a href="/resources" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Resources</a>
+        <a href="/grievance" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Grievance</a>
         <a href="/contact" class="block py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#aaff33]">Contact</a>
       </div>
     </div>
@@ -212,7 +214,7 @@
 
         <!-- Table -->
         <div class="overflow-x-auto rounded-xl shadow-sm border border-gray-100">
-          <table class="w-full text-sm bg-white">
+          <table class="min-w-[720px] w-full text-sm bg-white">
             <thead>
               <tr class="bg-[#008C5A] text-white text-xs uppercase tracking-wide">
                 <th class="px-4 py-3 text-left">Grievance No.</th>
@@ -241,7 +243,7 @@
   <!-- ===== Footer ===== -->
   <footer class="bg-custom-dark-footer text-white">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-14">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 border-b border-white/10 pb-8 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 border-b border-white/10 pb-8 mb-8">
         <div>
           <div class="flex items-center space-x-3 mb-3">
             <img src="images/spin_logo.jpeg" alt="SPIN Project Logo" class="w-12 h-12 object-contain">

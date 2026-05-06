@@ -4,12 +4,12 @@ Thank you for helping improve the SPIN website. This is a static HTML/CSS site, 
 
 ## Project Structure
 
-- `index.html`, `about.html`, `mandate.html`, `advertisements.html`, `participating-states.html`, `gallery.html`, and `contact.html` are the main public pages.
+- `index.html`, `about.html`, `mandate.html`, `advertisements.html`, `participating-states.html`, `gallery.html`, `grievance.html`, and `contact.html` are the main public pages.
 - `style.css` contains shared custom CSS used alongside Tailwind CDN classes.
 - `images/` stores logos, state maps, gallery media, and video assets.
 - `docs/` stores public procurement documents and downloadable files.
 - `ads/` stores dated advertisement pages.
-- `states/` stores individual state pages. Kano and Yobe currently use folder-based pages at `states/kano/index.html` and `states/yobe/index.html`.
+- `states/` stores individual state pages.
 - Files or folders with `copy`, `main`, or `saif` in the name are working snapshots. Do not treat them as the source of truth unless a maintainer asks you to.
 
 ## Local Preview
@@ -39,6 +39,12 @@ Keep the existing layout patterns unless the change requires a broader redesign.
 - Prefer editing the active page, not a backup copy.
 - Keep Tailwind utility classes consistent with nearby markup.
 - Put shared CSS in `style.css` only when the styling is reused or difficult to express cleanly in existing utilities.
+
+## Updating Navigation
+
+The site uses repeated static HTML menus instead of a shared component. When a primary menu item changes, update both desktop and mobile menus in every public page that includes the header.
+
+The desktop menu uses `hidden xl:flex` and the mobile menu uses `xl:hidden` so tablets use the hamburger menu instead of overflowing the navigation bar.
 
 ## Updating Images and Documents
 
@@ -70,13 +76,13 @@ Current display order:
 | 12 | Model 2 | Gombe | `states/gombe.html` |
 | 13 | Model 2 | Jigawa | `states/jigawa.html` |
 | 14 | Model 2 | Kaduna | `states/kaduna.html` |
-| 15 | Model 2 | Kano | `states/kano/index.html` |
+| 15 | Model 2 | Kano | `states/kano.html` |
 | 16 | Model 2 | Katsina | `states/katsina.html` |
 | 17 | Model 2 | Kebbi | `states/kebbi.html` |
 | 18 | Model 2 | Niger | `states/niger.html` |
 | 19 | Model 2 | Sokoto | `states/sokoto.html` |
 | 20 | Model 2 | Taraba | `states/taraba.html` |
-| 21 | Model 2 | Yobe | `states/yobe/index.html` |
+| 21 | Model 2 | Yobe | `states/yobe.html` |
 | 22 | Model 2 | Zamfara | `states/zamfara.html` |
 
 When adding a new state:
